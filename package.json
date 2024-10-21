@@ -12,7 +12,7 @@
     "typecheck:web": "tsc --noEmit -p tsconfig.web.json --composite false",
     "typecheck": "npm run typecheck:node && npm run typecheck:web",
     "start": "electron-vite preview",
-    "dev": "electron-vite dev",
+    "dev": "NODE_ENV=development electron-vite dev",
     "build": "npm run typecheck && electron-vite build",
     "postinstall": "electron-builder install-app-deps",
     "build:unpack": "npm run build && electron-builder --dir",
@@ -20,9 +20,21 @@
     "build:mac": "electron-vite build && electron-builder --mac",
     "build:linux": "electron-vite build && electron-builder --linux"
   },
+  "build": {
+    "extraResources": [
+      {
+        "from": "./resources",
+        "to": ".",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^3.0.0",
+    "electron-is-dev": "^3.0.1",
     "electron-updater": "^6.1.7",
     "sass": "^1.77.8"
   },
@@ -41,6 +53,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.3",
     "prettier": "^3.3.2",
+    "puppeteer": "^23.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "typescript": "^5.5.2",

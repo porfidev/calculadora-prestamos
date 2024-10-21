@@ -3,7 +3,7 @@ import { electronAPI } from '@electron-toolkit/preload';
 
 // Custom APIs for renderer
 const api = {
-  generateDocument: () => ipcRenderer.send('ping')
+  generateDocument: () => ipcRenderer.send('generate-document')
 };
 
 // Use `contextBridge` APIs to expose Electron APIs to

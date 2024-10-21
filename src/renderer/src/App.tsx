@@ -6,7 +6,8 @@ import AmortizationTable from '@components/Table/AmortizationTable';
 function App(): ReactElement {
   // const ipcHandle = (): void => window.electron.ipcRenderer.send('ping');
 
-  const handleAPICall = () => console.log(window.api.generateDocument());
+  // @ts-ignore (define in dts)
+  const handleAPICall = () => console.log(window?.api?.generateDocument());
   return (
     <>
       <MoneyLoanProvider>

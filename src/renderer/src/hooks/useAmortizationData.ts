@@ -1,4 +1,4 @@
-import { useContext, useMemo } from 'react';
+import { useContext } from 'react';
 import { MoneyLoanContext } from '@contexts/MoneyLoanContext';
 
 interface AmortizationScheduleEntry {

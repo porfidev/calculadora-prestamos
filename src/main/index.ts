@@ -3,6 +3,9 @@ import { join } from 'path';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 import icon from '../../resources/icon.png?asset';
 import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
+import path from 'path';
+const resourcesPath = process.env.NODE_ENV === 'development' ? '../../../' : process.resourcesPath;
+import pdFCredito from '../../resources/credito.pdf';
 
 function createWindow(): void {
   // Create the browser window.
@@ -58,7 +61,23 @@ app.whenReady().then(() => {
   // IPC test
   ipcMain.on('ping', () => console.log('pong'));
 
-  ipcMain.on('generate-document', () => console.log('generate document'));
+  ipcMain.on('generate-document', () => {
+    console.log('generate document');
+    const patito = path.join(__dirname, '../../resources/credito.pdf');
+    console.log(patito);
+    shell
+      .openPath(patito)
+      .then((result) => {
+        if (result) {
+          console.error('Error al abrir el archivo:', result);
+        } else {
+          console.log('Archivo abierto con éxito');
+        }
+      })
+      .catch((err) => {
+        console.error('Error al abrir el archivo >>:', err);
+      });
+  });
 
   createWindow();
 
