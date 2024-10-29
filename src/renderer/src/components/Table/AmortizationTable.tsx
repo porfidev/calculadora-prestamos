@@ -1,15 +1,13 @@
-import { ReactElement, useContext } from 'react';
+import { ReactElement } from 'react';
 import './AmortizationTable.styles.scss';
-import { MoneyLoanContext } from '@contexts/MoneyLoanContext';
 import { useAmortizationData } from '@hooks/useAmortizationData';
 
 const AmortizationTable = (): ReactElement => {
-  const { timePeriod } = useContext(MoneyLoanContext);
   const { amortizationData } = useAmortizationData();
 
   return (
     <div className="table-wrapper">
-      <h1>Tabla de amortización {timePeriod}</h1>
+      <h1>Tabla de amortización</h1>
       <table>
         <thead>
           <tr>

@@ -13,25 +13,19 @@ const MoneyLoanForm = (): ReactElement => {
           <fieldset>
             <legend>Crédito</legend>
             <label>Número de Crédito</label>
-            <input />
+            <input disabled />
 
             <label>Fecha de elaboración</label>
-            <input value={dateFormatter(new Date())} />
+            <input value={dateFormatter(new Date())} disabled/>
           </fieldset>
           <fieldset>
             <legend>Datos del solicitante</legend>
 
             <label>Nombre</label>
-            <input />
+            <input disabled/>
 
             <label>Teléfono</label>
-            <input />
-          </fieldset>
-        </div>
-
-        <div>
-          <fieldset>
-            <legend>Direccion</legend>
+            <input disabled/>
           </fieldset>
         </div>
 
@@ -40,14 +34,13 @@ const MoneyLoanForm = (): ReactElement => {
           <label>Monto Prestamo</label>
           <input value={amount} onChange={(e) => setAmount(Number(e.target.value) || 0)} />
 
-          <label>Tasa de Interes</label>
+          <label>Tasa de Interes (Anual)</label>
           <input
             value={`${monthInterest}`}
             onChange={(e) => setMonthInterest(Number(e.target.value) || 0)}
           />
 
           <label>Plazo</label>
-          {timePeriod}
           <select value={timePeriod} onChange={(e) => setTimePeriod(Number(e.target.value))}>
             <option value="0" disabled>Seleccione</option>
             <option value="3">3 meses</option>

@@ -13,7 +13,7 @@ function App(): ReactElement {
       <MoneyLoanProvider>
         <MoneyLoanForm />
         <AmortizationTable />
-        <button onClick={handleAPICall}>Generar Documento</button>
+        <button onClick={handleAPICall} disabled>Generar Documento</button>
       </MoneyLoanProvider>
     </>
   );
